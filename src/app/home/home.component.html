@@ -1,0 +1,30 @@
+<div class="row">
+  <div *ngIf="issues.length; then issueList else noIssueList"></div>
+  <ng-template #issueList>
+    <table class="table col-sm-12 col-md-12 col-12">
+      <thead>
+        <tr>
+          <th class="scope">ID</th>
+          <th>Description</th>
+          <th>Severity</th>
+          <th>Status</th>
+          <th>Created</th>
+          <th>Resolved</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="issues.length">
+        <tr *ngFor="let issue of issues">
+          <td>{{ issue.id }}</td>
+          <td>{{ issue.description }}</td>
+          <td>{{ issue.severity }}</td>
+          <td>{{ issue.status }}</td>
+          <td>{{ issue.createdDate }}</td>
+          <td>{{ issue.resolvedDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  <ng-template #noIssueList>
+    <h3 class="col-md-12 text-center">🎉  No issues here</h3>
+  </ng-template>
+</div>

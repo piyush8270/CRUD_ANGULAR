@@ -1,0 +1,36 @@
+<div class="row">
+    <h4 class="text-center offset-md-3 col-md-6">Ticket #{{ issue.id }}</h4>
+    <div class="form-group offset-md-3 col-md-6">
+        <label>Description</label>
+        <input class="form-control" [(ngModel)]="issue.description" type="text" placeholder="enter description">
+    </div>
+    <div class="form-group offset-md-3 col-md-6">
+        <label>Severity</label>
+        <select class="form-control" [(ngModel)]="issue.severity">
+            <option></option>
+            <option>Minor</option>
+            <option>Major</option>
+            <option>Critical</option>
+        </select>
+    </div>
+    <div class="form-group offset-md-3 col-md-6">
+        <label>Status</label>
+        <select class="form-control" [(ngModel)]="issue.status">
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Closed</option>
+        </select>
+    </div>
+    <div class="form-group offset-md-3 col-md-6">
+        <label>Created Date</label>
+        <input class="form-control" [(ngModel)]="issue.createdDate" type="date">
+    </div>
+    <div class="form-group offset-md-3 col-md-6">
+        <label>Resolved Date</label>
+        <input class="form-control" [(ngModel)]="issue.resolvedDate" type="date">
+    </div>
+    <div class="form-group offset-md-3 col-md-6">
+        <button class="btn btn-success offset-md-3 col-md-6" routerLink="/">Update</button>
+    </div>
+</div>
+<hr>

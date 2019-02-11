@@ -1,0 +1,116 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-12">
+        <h5>Customise Table</h5>
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="fields.id" checked>
+          <label class="form-check-label">ID</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="fields.description" checked>
+          <label class="form-check-label">Description</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="fields.severity" checked>
+          <label class="form-check-label">Severity</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="fields.status" checked>
+          <label class="form-check-label">Status</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="fields.createdDate" checked>
+          <label class="form-check-label">Created Date</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="fields.resolvedDate" checked>
+          <label class="form-check-label">Restored Date</label>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h5>Filter</h5>
+        <div class="form-group">
+          <label>Severity:</label>
+          <select class="form-control" [(ngModel)]="filterSeverity" (change)="filterIssue($event.target.value)">
+            <option>All</option>
+            <option>Minor</option>
+            <option>Major</option>
+            <option>Critical</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select class="form-control" [(ngModel)]="filterStatus" (change)="filterIssue($event.target.value)">
+            <option>All</option>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Closed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row">
+      <table class="table col-sm-12 col-md-12 col-12">
+        <thead>
+          <tr>
+            <th></th>
+            <th *ngIf="fields.id" class="scope">ID</th>
+            <th *ngIf="fields.description">Description</th>
+            <th *ngIf="fields.severity">Severity</th>
+            <th *ngIf="fields.status">Status</th>
+            <th *ngIf="fields.createdDate">Created</th>
+            <th *ngIf="fields.resolvedDate">Resolved</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let issue of filteredIssues">
+            <td>
+              <input type="checkbox" (change)="collectID(issue.id, $event)">
+            </td>
+            <td *ngIf="fields.id">{{ issue.id }}</td>
+            <td *ngIf="fields.description">{{ issue.description }}</td>
+            <td *ngIf="fields.severity">{{ issue.severity }}</td>
+            <td *ngIf="fields.status">{{ issue.status }}</td>
+            <td *ngIf="fields.createdDate">{{ issue.createdDate }}</td>
+            <td *ngIf="fields.resolvedDate">{{ issue.resolvedDate }}</td>
+            <td>
+              <button class="btn btn-info" routerLink="/detail/{{ issue.id }}">Update</button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteIssueID(issue.id)">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn btn-dark" (click)="deleteIssue()">Delete</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

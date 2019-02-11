@@ -1,0 +1,34 @@
+<div class="row">
+  <h4 class="text-center offset-md-3 col-md-6">Create an Issue ticket</h4>
+  <div class="form-group offset-md-3 col-md-6">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="description" type="text" placeholder="enter description">
+  </div>
+  <div class="form-group offset-md-3 col-md-6">
+    <label>Severity</label>
+    <select class="form-control" [(ngModel)]="severity">
+      <option>Minor</option>
+      <option>Major</option>
+      <option>Critical</option>
+    </select>
+  </div>
+  <div class="form-group offset-md-3 col-md-6">
+    <label>Status</label>
+    <select class="form-control" [(ngModel)]="status">
+      <option>Open</option>
+      <option>In Progress</option>
+      <option>Closed</option>
+    </select>
+  </div>
+  <div class="form-group offset-md-3 col-md-6">
+      <label>Created Date</label>
+      <input class="form-control" [(ngModel)]="createdDate" (change)="log($event.target.value)" type="date">
+  </div>
+  <div class="form-group offset-md-3 col-md-6">
+      <label>Restored Date</label>
+      <input class="form-control" [(ngModel)]="restoredDate" (change)="log($event.target.value)" type="date">
+  </div>
+  <div class="form-group offset-md-3 col-md-6">
+    <button class="btn btn-primary offset-md-3 col-md-6" (click)="createIssue(description, severity, status, createdDate, restoredDate)">Create Issue</button>
+  </div>
+</div>
